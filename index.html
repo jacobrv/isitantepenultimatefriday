@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <style>
+      main_container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      h1 {
+        font-size: 96px;
+        font-family: Lato, sans-serif;
+        font-weight: 300;
+      }
+      h2 {
+        font-size: 48px;
+        font-family: Lato, sans-serif;
+        font-weight: 300;
+      }
+      @media only screen and (max-width: 800px) {
+        h1 {
+          font-size: 36px;
+        }
+        h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  </head>
+
+  <body>
+    <div class="main_container" style="width: 100%; text-align: center">
+      <h1>Is It Antepenultimate Friday?</h1>
+      <h1 id="AF_Answer">Maybe</h1>
+      <br />
+      <h2>What About This Coming Friday?</h2>
+      <h2 id="AF_Week_Answer">Maybe</h2>
+    </div>
+
+    <script>
+      if (moment().format("dddd") === "Friday") {
+        if (
+          moment().startOf("day").add(7, "days").format("MMMM") ===
+          moment().startOf("day").format("MMMM")
+        ) {
+          if (
+            moment().startOf("day").add(14, "days").format("MMMM") ===
+            moment().startOf("day").format("MMMM")
+          ) {
+            if (
+              moment().startOf("day").add(21, "days").format("MMMM") !==
+              moment().startOf("day").format("MMMM")
+            ) {
+              document.querySelector("#AF_Answer").innerText = "YES!";
+              console.log("YES!");
+            } else {
+              document.querySelector("#AF_Answer").innerText = "NO!";
+              console.log("NO!");
+            }
+          } else {
+            document.querySelector("#AF_Answer").innerText = "NO!";
+            console.log("NO!");
+          }
+        } else {
+          document.querySelector("#AF_Answer").innerText = "NO!";
+          console.log("NO!");
+        }
+      } else {
+        document.querySelector("#AF_Answer").innerText = "NO!";
+        console.log("NO!");
+      }
+
+      if (moment().format("dddd") !== "Friday") {
+        if (
+          moment()
+            .startOf("week")
+            .add(5, "days")
+            .add(7, "days")
+            .format("MMMM") ===
+          moment().startOf("week").add(5, "days").format("MMMM")
+        ) {
+          if (
+            moment()
+              .startOf("week")
+              .add(5, "days")
+              .add(14, "days")
+              .format("MMMM") ===
+            moment().startOf("week").add(5, "days").format("MMMM")
+          ) {
+            if (
+              moment()
+                .startOf("week")
+                .add(5, "days")
+                .add(21, "days")
+                .format("MMMM") !==
+              moment().startOf("week").add(5, "days").format("MMMM")
+            ) {
+              document.querySelector("#AF_Week_Answer").innerText = "YES!";
+              console.log("YES!");
+            } else {
+              document.querySelector("#AF_Week_Answer").innerText = "NO!";
+              console.log("NO!");
+            }
+          } else {
+            document.querySelector("#AF_Week_Answer").innerText = "NO!";
+            console.log("NO!");
+          }
+        } else {
+          document.querySelector("#AF_Week_Answer").innerText = "NO!";
+          console.log("NO!");
+        }
+      } else {
+        document.querySelector("#AF_Week_Answer").innerText = "NO!";
+        console.log("NO!");
+      }
+    </script>
+  </body>
+</html>
