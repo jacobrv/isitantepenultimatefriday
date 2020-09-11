@@ -3,6 +3,11 @@
     <style>
       html {
         font-family: Lato, sans-serif;
+        background: black;
+        color: #20c20e;
+      }
+      a {
+        color: #20c20e;
       }
       h1 {
         font-size: 96px;
@@ -83,14 +88,14 @@
           moment().startOf("week").add(5, "days").format("MMMM");
 
       if (af) {
-        document.querySelector("#AF_Answer").innerText = "YES!";
+        document.querySelector("#AF_Answer").innerText = "🍹 YES! 🍹";
       } else {
-        document.querySelector("#AF_Answer").innerText = "NO!";
+        document.querySelector("#AF_Answer").innerText = "😞 NO! 😞";
       }
       if (naf) {
-        document.querySelector("#AF_Week_Answer").innerText = "YES!";
+        document.querySelector("#AF_Week_Answer").innerText = "🍹 YES! 🍹";
       } else {
-        document.querySelector("#AF_Week_Answer").innerText = "NO!";
+        document.querySelector("#AF_Week_Answer").innerText = "😞 NO! 😞";
       }
     </script>
   </body>
