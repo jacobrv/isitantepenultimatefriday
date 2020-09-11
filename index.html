@@ -1,15 +1,16 @@
 <html>
   <head>
     <style>
+      html {
+        font-family: Lato, sans-serif;
+      }
       h1 {
         font-size: 96px;
-        font-family: Lato, sans-serif;
         font-weight: 300;
       }
 
       h2 {
         font-size: 48px;
-        font-family: Lato, sans-serif;
         font-weight: 300;
       }
 
@@ -31,64 +32,55 @@
       <h1>Is It Antepenultimate Friday?</h1>
       <h1 id="AF_Answer">Maybe</h1>
       <br />
-      <h2>Is/Was AF The Friday Of This Week?</h2>
+      <h2>Is/Was Antepenultimate Friday This Week?</h2>
       <h2 id="AF_Week_Answer">Maybe</h2>
+      <br />
+      <p style="font-size: 8px">
+        Note: If your week starts on a day other than Sunday, this site might be
+        off.
+      </p>
+      <br />
+      <br />
+      <p><strong>What is Antepenultimate Friday?</strong></p>
+      <p>It's the third to last Friday of the month.</p>
+
+      <br />
+      <br />
+      <a href="https://webcoder.info/Friday.ics"
+        >Add Antepenultimate Friday to your calendar!</a
+      >
     </div>
 
     <script>
       let af =
-        moment().format("dddd") === "Friday" &&
-        moment()
-          .startOf("day")
-          .add(7, "days")
-          .format("MMMM") ===
-          moment()
-            .startOf("day")
-            .format("MMMM") &&
-        moment()
-          .startOf("day")
-          .add(14, "days")
-          .format("MMMM") ===
-          moment()
-            .startOf("day")
-            .format("MMMM") &&
-        moment()
-          .startOf("day")
-          .add(21, "days")
-          .format("MMMM") !==
-          moment()
-            .startOf("day")
-            .format("MMMM");
+        moment().format("dddd") ===
+          moment().startOf("week").add(5, "days").format("dddd") &&
+        moment().startOf("day").add(7, "days").format("MMMM") ===
+          moment().startOf("day").format("MMMM") &&
+        moment().startOf("day").add(14, "days").format("MMMM") ===
+          moment().startOf("day").format("MMMM") &&
+        moment().startOf("day").add(21, "days").format("MMMM") !==
+          moment().startOf("day").format("MMMM");
 
       let naf =
-        moment().format("dddd") !== "Friday" &&
         moment()
           .startOf("week")
           .add(5, "days")
           .add(7, "days")
           .format("MMMM") ===
-          moment()
-            .startOf("week")
-            .add(5, "days")
-            .format("MMMM") &&
+          moment().startOf("week").add(5, "days").format("MMMM") &&
         moment()
           .startOf("week")
           .add(5, "days")
           .add(14, "days")
           .format("MMMM") ===
-          moment()
-            .startOf("week")
-            .add(5, "days")
-            .format("MMMM") &&
+          moment().startOf("week").add(5, "days").format("MMMM") &&
         moment()
           .startOf("week")
           .add(5, "days")
           .add(21, "days")
           .format("MMMM") !==
-          moment()
-            .startOf("week")
-            .add(5, "days")
-            .format("MMMM");
+          moment().startOf("week").add(5, "days").format("MMMM");
 
       if (af) {
         document.querySelector("#AF_Answer").innerText = "YES!";
